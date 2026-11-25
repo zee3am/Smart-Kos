@@ -264,7 +264,7 @@ def build_complete_document():
         row.cells[4].paragraphs[0].add_run(cum).font.bold = (idx == 5)
         format_data_row(row, f1_widths, is_even=(idx % 2 == 1))
 
-    doc.add_paragraph("Statement Coverage F-01: 15 / 15 (100%) | Branch Coverage F-01: 8 / 8 Cabang (100% Ditutupi TC-01 s/d TC-06)").paragraphs[0].runs[0].font.size = Pt(8.5)
+    doc.add_paragraph("Statement Coverage F-01: 15 / 15 (100%) | Branch Coverage F-01: 8 / 8 Cabang (100% Ditutupi TC-01 s/d TC-06)").runs[0].font.size = Pt(8.5)
     doc.add_paragraph().paragraph_format.space_after = Pt(8)
 
     # -------------------------------------------------------------
@@ -330,7 +330,7 @@ def build_complete_document():
         row.cells[4].paragraphs[0].add_run(cum).font.bold = (idx == 4)
         format_data_row(row, f1_widths, is_even=(idx % 2 == 1))
 
-    doc.add_paragraph("Statement Coverage F-02: 13 / 13 (100%) | Branch Coverage F-02: 6 / 6 Cabang (100%)").paragraphs[0].runs[0].font.size = Pt(8.5)
+    doc.add_paragraph("Statement Coverage F-02: 13 / 13 (100%) | Branch Coverage F-02: 6 / 6 Cabang (100%)").runs[0].font.size = Pt(8.5)
     doc.add_paragraph().paragraph_format.space_after = Pt(8)
 
     # -------------------------------------------------------------
@@ -385,7 +385,7 @@ def build_complete_document():
         row.cells[4].paragraphs[0].add_run(cum).font.bold = (idx == 4)
         format_data_row(row, f1_widths, is_even=(idx % 2 == 1))
 
-    doc.add_paragraph("Statement Coverage F-03: 22 / 22 (100%) | Branch Coverage F-03: 10 / 10 Cabang (100%)").paragraphs[0].runs[0].font.size = Pt(8.5)
+    doc.add_paragraph("Statement Coverage F-03: 22 / 22 (100%) | Branch Coverage F-03: 10 / 10 Cabang (100%)").runs[0].font.size = Pt(8.5)
     doc.add_paragraph().paragraph_format.space_after = Pt(8)
 
     # -------------------------------------------------------------
@@ -411,7 +411,7 @@ def build_complete_document():
         ("}", False, False)
     ]
     add_code_block(doc, f4_code)
-    doc.add_paragraph("Test Case TC-ROOM-01 mengeksekusi S1 dan S2 secara berurutan dengan mock Prisma delete & revalidatePath (100% Statement Coverage).").paragraphs[0].runs[0].font.size = Pt(8.5)
+    doc.add_paragraph("Test Case TC-ROOM-01 mengeksekusi S1 dan S2 secara berurutan dengan mock Prisma delete & revalidatePath (100% Statement Coverage).").runs[0].font.size = Pt(8.5)
     doc.add_paragraph().paragraph_format.space_after = Pt(8)
 
     # -------------------------------------------------------------
@@ -430,7 +430,7 @@ def build_complete_document():
     p_f5_desc.paragraph_format.space_after = Pt(4)
     p_f5_desc.add_run("Lokasi File: app/admin/verifikasi/actions.ts | Total Statement: 19 (S1–S19) | Titik Keputusan: 3 (D1–D3, Cabang B1–B6) | V(G) = 3").font.size = Pt(9.0)
 
-    doc.add_paragraph("Analisis detail dekomposisi fungsi approveBooking telah disajikan secara komprehensif pada Bagian 1 & 2 di awal dokumen. Ditambahkan fungsi rejectBooking(): S15 findUnique, S16 [D3] if (!booking) return error S17, S18 update status REJECTED, S19 revalidatePath. Seluruh 19 statement dan 6 cabang ditutupi oleh TC-BOOK-01 s/d TC-BOOK-05 (100% Statement & Branch Coverage).").paragraphs[0].runs[0].font.size = Pt(8.5)
+    doc.add_paragraph("Analisis detail dekomposisi fungsi approveBooking telah disajikan secara komprehensif pada Bagian 1 & 2 di awal dokumen. Ditambahkan fungsi rejectBooking(): S15 findUnique, S16 [D3] if (!booking) return error S17, S18 update status REJECTED, S19 revalidatePath. Seluruh 19 statement dan 6 cabang ditutupi oleh TC-BOOK-01 s/d TC-BOOK-05 (100% Statement & Branch Coverage).").runs[0].font.size = Pt(8.5)
     doc.add_paragraph().paragraph_format.space_after = Pt(8)
 
     # -------------------------------------------------------------
@@ -459,7 +459,7 @@ def build_complete_document():
         ("}", False, False)
     ]
     add_code_block(doc, f6_code)
-    doc.add_paragraph("Ditutupi oleh TC-BILL-01 (form kosong -> throw error), TC-BILL-02 (update profil & upload file), dan TC-BILL-03 (create profil baru) -> 100% Statement Coverage.").paragraphs[0].runs[0].font.size = Pt(8.5)
+    doc.add_paragraph("Ditutupi oleh TC-BILL-01 (form kosong -> throw error), TC-BILL-02 (update profil & upload file), dan TC-BILL-03 (create profil baru) -> 100% Statement Coverage.").runs[0].font.size = Pt(8.5)
     doc.add_paragraph().paragraph_format.space_after = Pt(8)
 
     # -------------------------------------------------------------
@@ -485,7 +485,7 @@ def build_complete_document():
         ("}", False, False)
     ]
     add_code_block(doc, f7_code)
-    doc.add_paragraph("Ditutupi oleh TC-TKT-01 (transisi ke status PROSES) dan TC-TKT-02 (transisi ke status SELESAI) -> 100% Statement Coverage.").paragraphs[0].runs[0].font.size = Pt(8.5)
+    doc.add_paragraph("Ditutupi oleh TC-TKT-01 (transisi ke status PROSES) dan TC-TKT-02 (transisi ke status SELESAI) -> 100% Statement Coverage.").runs[0].font.size = Pt(8.5)
     doc.add_paragraph().paragraph_format.space_after = Pt(8)
 
     # -------------------------------------------------------------
@@ -513,7 +513,7 @@ def build_complete_document():
         ("// S20 [D5] if (user.kamar_id) update kamar KOSONG S21, S22 delete cascade booking/tiket/user, S23 revalidatePath", True, True)
     ]
     add_code_block(doc, f8_code)
-    doc.add_paragraph("Ditutupi oleh TC-TNT-01 s/d TC-TNT-07 (form kosong, email duplikat, kamar tidak kosong, sukses tambah penghuni, exception DB, penghuni not found, sukses hapus dan kosongkan kamar) -> 100% Statement Coverage, 94.7% Branch Coverage.").paragraphs[0].runs[0].font.size = Pt(8.5)
+    doc.add_paragraph("Ditutupi oleh TC-TNT-01 s/d TC-TNT-07 (form kosong, email duplikat, kamar tidak kosong, sukses tambah penghuni, exception DB, penghuni not found, sukses hapus dan kosongkan kamar) -> 100% Statement Coverage, 94.7% Branch Coverage.").runs[0].font.size = Pt(8.5)
     doc.add_paragraph().paragraph_format.space_after = Pt(14)
 
     # ==========================
@@ -696,9 +696,15 @@ def build_complete_document():
     r_gi_val.font.size = Pt(9.5)
     r_gi_val.font.color.rgb = CODE_COLOR
 
-    # Save to _White Box Testing Template.docx
-    doc.save(r"_White Box Testing Template.docx")
-    print("SUCCESS: Full 8-feature comprehensive document generated and saved!")
+    # Save to _White Box Testing Template.docx or fallback if opened in Word
+    try:
+        doc.save(r"_White Box Testing Template.docx")
+        print("SUCCESS: Saved to _White Box Testing Template.docx")
+    except PermissionError:
+        print("NOTE: _White Box Testing Template.docx is currently locked/opened in Word.")
+    
+    doc.save(r"White_Box_Testing_SmartKos_Module4_Full.docx")
+    print("SUCCESS: Saved to White_Box_Testing_SmartKos_Module4_Full.docx")
 
 if __name__ == "__main__":
     build_complete_document()
