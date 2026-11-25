@@ -44,7 +44,7 @@ describe("Unit Testing: Feature Verifikasi Booking Admin (app/admin/verifikasi/a
 
     // TEST DOUBLE 1 (STUB):
     // Mensimulasikan prisma.booking.findUnique mengembalikan null (canned response)
-    (prisma.booking.findUnique as jest.Mock).mockResolvedValue(null);
+    (prisma.booking.findUnique as any).mockResolvedValue(null);
 
     // --------------------------------------------------
     // 2. ACT
@@ -89,11 +89,11 @@ describe("Unit Testing: Feature Verifikasi Booking Admin (app/admin/verifikasi/a
 
     // TEST DOUBLE 1 (STUB):
     // Mengembalikan data booking valid dan lastActiveBooking null (tidak ada perpanjangan)
-    (prisma.booking.findUnique as jest.Mock).mockResolvedValue(dummyBooking);
-    (prisma.booking.findFirst as jest.Mock).mockResolvedValue(null);
-    (prisma.booking.update as jest.Mock).mockResolvedValue({ id: bookingId, status: "APPROVED" });
-    (prisma.kamar.update as jest.Mock).mockResolvedValue({ id: dummyBooking.kamar_id, status: "TERISI" });
-    (prisma.user.update as jest.Mock).mockResolvedValue({ id: dummyBooking.user_id, status: "PENGHUNI" });
+    (prisma.booking.findUnique as any).mockResolvedValue(dummyBooking);
+    (prisma.booking.findFirst as any).mockResolvedValue(null);
+    (prisma.booking.update as any).mockResolvedValue({ id: bookingId, status: "APPROVED" });
+    (prisma.kamar.update as any).mockResolvedValue({ id: dummyBooking.kamar_id, status: "TERISI" });
+    (prisma.user.update as any).mockResolvedValue({ id: dummyBooking.user_id, status: "PENGHUNI" });
 
     const beforeCallTime = new Date();
 
@@ -111,7 +111,7 @@ describe("Unit Testing: Feature Verifikasi Booking Admin (app/admin/verifikasi/a
     // TEST DOUBLE 2 (MOCK):
     // Verifikasi pemanggilan prisma.booking.update dengan data APPROVED dan tanggal_berakhir
     expect(prisma.booking.update).toHaveBeenCalledTimes(1);
-    const updateCallArg = (prisma.booking.update as jest.Mock).mock.calls[0][0];
+    const updateCallArg = (prisma.booking.update as any).mock.calls[0][0];
     expect(updateCallArg.where).toEqual({ id: bookingId });
     expect(updateCallArg.data.status).toBe("APPROVED");
     
@@ -168,11 +168,11 @@ describe("Unit Testing: Feature Verifikasi Booking Admin (app/admin/verifikasi/a
     };
 
     // TEST DOUBLE 1 (STUB):
-    (prisma.booking.findUnique as jest.Mock).mockResolvedValue(dummyBooking);
-    (prisma.booking.findFirst as jest.Mock).mockResolvedValue(dummyLastActiveBooking);
-    (prisma.booking.update as jest.Mock).mockResolvedValue({ id: bookingId, status: "APPROVED" });
-    (prisma.kamar.update as jest.Mock).mockResolvedValue({ id: dummyBooking.kamar_id, status: "TERISI" });
-    (prisma.user.update as jest.Mock).mockResolvedValue({ id: dummyBooking.user_id, status: "PENGHUNI" });
+    (prisma.booking.findUnique as any).mockResolvedValue(dummyBooking);
+    (prisma.booking.findFirst as any).mockResolvedValue(dummyLastActiveBooking);
+    (prisma.booking.update as any).mockResolvedValue({ id: bookingId, status: "APPROVED" });
+    (prisma.kamar.update as any).mockResolvedValue({ id: dummyBooking.kamar_id, status: "TERISI" });
+    (prisma.user.update as any).mockResolvedValue({ id: dummyBooking.user_id, status: "PENGHUNI" });
 
     // --------------------------------------------------
     // 2. ACT
@@ -187,7 +187,7 @@ describe("Unit Testing: Feature Verifikasi Booking Admin (app/admin/verifikasi/a
     // TEST DOUBLE 2 (MOCK):
     // Verifikasi bahwa tanggal_berakhir dihitung dari activeEndDate + 3 bulan
     expect(prisma.booking.update).toHaveBeenCalledTimes(1);
-    const updateCallArg = (prisma.booking.update as jest.Mock).mock.calls[0][0];
+    const updateCallArg = (prisma.booking.update as any).mock.calls[0][0];
     const newCalculatedEndDate = new Date(updateCallArg.data.tanggal_berakhir);
 
     const expectedEndDate = new Date(activeEndDate);
@@ -219,7 +219,7 @@ describe("Unit Testing: Feature Verifikasi Booking Admin (app/admin/verifikasi/a
   // ==========================================================================
   describe("rejectBooking()", () => {
     test("TC-04: harus mengembalikan error jika bookingId tidak ditemukan saat reject", async () => {
-      (prisma.booking.findUnique as jest.Mock).mockResolvedValue(null);
+      (prisma.booking.findUnique as any).mockResolvedValue(null);
 
       const result = await rejectBooking("bk-not-found");
 
@@ -228,8 +228,8 @@ describe("Unit Testing: Feature Verifikasi Booking Admin (app/admin/verifikasi/a
     });
 
     test("TC-05: harus memperbarui status booking menjadi REJECTED ketika penolakan berhasil", async () => {
-      (prisma.booking.findUnique as jest.Mock).mockResolvedValue({ id: "bk-valid-reject" });
-      (prisma.booking.update as jest.Mock).mockResolvedValue({ id: "bk-valid-reject", status: "REJECTED" });
+      (prisma.booking.findUnique as any).mockResolvedValue({ id: "bk-valid-reject" });
+      (prisma.booking.update as any).mockResolvedValue({ id: "bk-valid-reject", status: "REJECTED" });
 
       const result = await rejectBooking("bk-valid-reject");
 
