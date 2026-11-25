@@ -22,7 +22,9 @@ const config: Config = {
     ],
   },
   collectCoverageFrom: [
-    'app/admin/verifikasi/actions.ts',
+    'app/**/actions.ts',
+    '!app/actions.ts',
+    '!app/dashboard/**/actions.ts',
   ],
   coverageReporters: ['text', 'lcov', 'html'],
 };
