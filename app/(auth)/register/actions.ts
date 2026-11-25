@@ -9,9 +9,15 @@ export async function registerUser(formData: FormData) {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
     const no_hp = formData.get("no_hp") as string;
+    const role_code = formData.get("role_code") as string;
 
     if (!nama || !email || !password || !no_hp) {
         return { error: "Semua form wajib diisi!" };
+    }
+
+    let assignedRole = "USER";
+    if (role_code === "KOSADMIN2026") {
+        assignedRole = "ADMIN";
     }
 
     try {
@@ -31,6 +37,7 @@ export async function registerUser(formData: FormData) {
                 email,
                 password: hashedPassword,
                 no_hp,
+                role: assignedRole as any,
             },
         });
     } catch (error) {

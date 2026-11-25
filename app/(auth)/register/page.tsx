@@ -109,6 +109,11 @@ export default function RegisterForm() {
                             </div>
                         </div>
 
+                        <div className="space-y-1.5 pt-2">
+                            <label className="text-sm font-semibold text-gray-700">Kode Registrasi Admin <span className="text-gray-400 font-normal">(Opsional)</span></label>
+                            <input name="role_code" type="password" className="w-full border border-gray-300 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary text-sm text-gray-900" placeholder="Kosongkan jika mendaftar sebagai penghuni" />
+                        </div>
+
                         <Button type="submit" variant="primary" className="w-full pt-3 pb-3 font-bold mt-2 shadow-md shadow-primary/20" disabled={isPending}>
                             {isPending ? "Mendaftarkan..." : "Daftar Akun"}
                         </Button>
